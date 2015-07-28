@@ -1,0 +1,6 @@
+configure.ac:20:AC_CONFIG_HEADERS:config.h
+configure.ac:21:AC_CONFIG_MACRO_DIR:m4
+configure.ac:32:AM_INIT_AUTOMAKE:
+configure.ac:75:AC_PROG_LIBTOOL:
+configure.ac:75:LT_INIT:
+configure.ac:147:AC_CONFIG_SUBDIRS:gtest

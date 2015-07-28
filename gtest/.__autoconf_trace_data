@@ -1,0 +1,6 @@
+configure.ac:15:AC_CONFIG_MACRO_DIR:m4
+configure.ac:16:AC_CONFIG_AUX_DIR:build-aux
+configure.ac:17:AC_CONFIG_HEADERS:build-aux/config.h
+configure.ac:24:AM_INIT_AUTOMAKE:1.9 dist-bzip2 dist-zip foreign subdir-objects
+configure.ac:30:AC_PROG_LIBTOOL:
+configure.ac:30:LT_INIT:
