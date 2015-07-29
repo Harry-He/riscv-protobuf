@@ -407,6 +407,7 @@ am__nobase_include_HEADERS_DIST = google/protobuf/stubs/atomicops.h \
 	google/protobuf/stubs/atomicops_internals_macosx.h \
 	google/protobuf/stubs/atomicops_internals_mips_gcc.h \
 	google/protobuf/stubs/atomicops_internals_pnacl.h \
+	google/protobuf/stubs/atomicops_internals_riscv64_gcc.h \
 	google/protobuf/stubs/atomicops_internals_x86_gcc.h \
 	google/protobuf/stubs/atomicops_internals_x86_msvc.h \
 	google/protobuf/stubs/common.h \
@@ -812,6 +813,7 @@ nobase_include_HEADERS = \
   google/protobuf/stubs/atomicops_internals_macosx.h            \
   google/protobuf/stubs/atomicops_internals_mips_gcc.h          \
   google/protobuf/stubs/atomicops_internals_pnacl.h             \
+  google/protobuf/stubs/atomicops_internals_riscv64_gcc.h       \
   google/protobuf/stubs/atomicops_internals_x86_gcc.h           \
   google/protobuf/stubs/atomicops_internals_x86_msvc.h          \
   google/protobuf/stubs/common.h                                \
@@ -3524,14 +3526,14 @@ clean-local:
 	rm -f *.loT
 
 @USE_EXTERNAL_PROTOC_TRUE@unittest_proto_middleman: $(protoc_inputs)
-@USE_EXTERNAL_PROTOC_TRUE@	$(PROTOC) -I$(srcdir) --cpp_out=. $^
+@USE_EXTERNAL_PROTOC_TRUE@	-$(PROTOC) -I$(srcdir) --cpp_out=. $^
 @USE_EXTERNAL_PROTOC_TRUE@	touch unittest_proto_middleman
 
 # We have to cd to $(srcdir) before executing protoc because $(protoc_inputs) is
 # relative to srcdir, which may not be the same as the current directory when
 # building out-of-tree.
 @USE_EXTERNAL_PROTOC_FALSE@unittest_proto_middleman: protoc$(EXEEXT) $(protoc_inputs)
-@USE_EXTERNAL_PROTOC_FALSE@	oldpwd=`pwd` && ( cd $(srcdir) && $$oldpwd/protoc$(EXEEXT) -I. --cpp_out=$$oldpwd $(protoc_inputs) )
+@USE_EXTERNAL_PROTOC_FALSE@	-oldpwd=`pwd` && ( cd $(srcdir) && $$oldpwd/protoc$(EXEEXT) -I. --cpp_out=$$oldpwd $(protoc_inputs) )
 @USE_EXTERNAL_PROTOC_FALSE@	touch unittest_proto_middleman
 
 $(protoc_outputs): unittest_proto_middleman

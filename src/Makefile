@@ -198,7 +198,7 @@ libprotoc_la_OBJECTS = $(am_libprotoc_la_OBJECTS)
 libprotoc_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(libprotoc_la_LDFLAGS) $(LDFLAGS) -o $@
-#am__EXEEXT_1 = zcgzip$(EXEEXT) zcgunzip$(EXEEXT)
+am__EXEEXT_1 = zcgzip$(EXEEXT) zcgunzip$(EXEEXT)
 PROGRAMS = $(bin_PROGRAMS)
 am__objects_2 = protobuf_lazy_descriptor_test-test_util.$(OBJEXT) \
 	protobuf_lazy_descriptor_test-googletest.$(OBJEXT) \
@@ -319,15 +319,15 @@ test_plugin_OBJECTS = $(am_test_plugin_OBJECTS)
 test_plugin_DEPENDENCIES = $(am__DEPENDENCIES_1) libprotobuf.la \
 	libprotoc.la $(top_builddir)/gtest/lib/libgtest.la
 am__zcgunzip_SOURCES_DIST = google/protobuf/testing/zcgunzip.cc
-#am_zcgunzip_OBJECTS = zcgunzip.$(OBJEXT)
+am_zcgunzip_OBJECTS = zcgunzip.$(OBJEXT)
 zcgunzip_OBJECTS = $(am_zcgunzip_OBJECTS)
-#zcgunzip_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-#	libprotobuf.la
+zcgunzip_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+	libprotobuf.la
 am__zcgzip_SOURCES_DIST = google/protobuf/testing/zcgzip.cc
-#am_zcgzip_OBJECTS = zcgzip.$(OBJEXT)
+am_zcgzip_OBJECTS = zcgzip.$(OBJEXT)
 zcgzip_OBJECTS = $(am_zcgzip_OBJECTS)
-#zcgzip_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-#	libprotobuf.la
+zcgzip_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+	libprotobuf.la
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
 am__v_P_0 = false
@@ -407,6 +407,7 @@ am__nobase_include_HEADERS_DIST = google/protobuf/stubs/atomicops.h \
 	google/protobuf/stubs/atomicops_internals_macosx.h \
 	google/protobuf/stubs/atomicops_internals_mips_gcc.h \
 	google/protobuf/stubs/atomicops_internals_pnacl.h \
+	google/protobuf/stubs/atomicops_internals_riscv64_gcc.h \
 	google/protobuf/stubs/atomicops_internals_x86_gcc.h \
 	google/protobuf/stubs/atomicops_internals_x86_msvc.h \
 	google/protobuf/stubs/common.h \
@@ -621,8 +622,8 @@ am__set_TESTS_bases = \
   bases=`echo $$bases`
 RECHECK_LOGS = $(TEST_LOGS)
 AM_RECURSIVE_TARGETS = check recheck
-#am__EXEEXT_2 =  \
-#	google/protobuf/io/gzip_stream_unittest.sh
+am__EXEEXT_2 =  \
+	google/protobuf/io/gzip_stream_unittest.sh
 TEST_SUITE_LOG = test-suite.log
 TEST_EXTENSIONS =  .test
 LOG_DRIVER = $(SHELL) $(top_srcdir)/test-driver
@@ -646,18 +647,18 @@ TEST_LOG_COMPILE = $(TEST_LOG_COMPILER) $(AM_TEST_LOG_FLAGS) \
 am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/depcomp \
 	$(top_srcdir)/test-driver
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /usr/riscv64-unknown-linux-gnu/tmp/portage/dev-libs/protobuf-2.5.0-r2/work/protobuf-2.5.0/missing aclocal-1.15
+ACLOCAL = ${SHELL} /home/main/Desktop/riscv-protobuf/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
 AR = riscv64-unknown-linux-gnu-ar
-AUTOCONF = ${SHELL} /usr/riscv64-unknown-linux-gnu/tmp/portage/dev-libs/protobuf-2.5.0-r2/work/protobuf-2.5.0/missing autoconf
-AUTOHEADER = ${SHELL} /usr/riscv64-unknown-linux-gnu/tmp/portage/dev-libs/protobuf-2.5.0-r2/work/protobuf-2.5.0/missing autoheader
-AUTOMAKE = ${SHELL} /usr/riscv64-unknown-linux-gnu/tmp/portage/dev-libs/protobuf-2.5.0-r2/work/protobuf-2.5.0/missing automake-1.15
+AUTOCONF = ${SHELL} /home/main/Desktop/riscv-protobuf/missing autoconf
+AUTOHEADER = ${SHELL} /home/main/Desktop/riscv-protobuf/missing autoheader
+AUTOMAKE = ${SHELL} /home/main/Desktop/riscv-protobuf/missing automake-1.15
 AWK = gawk
 CC = riscv64-unknown-linux-gnu-gcc
 CCDEPMODE = depmode=gcc3
-CFLAGS = 
-CPPFLAGS = 
+CFLAGS = -march=RV64IMAFDXhwacha -mhwacha4
+CPPFLAGS = -march=RV64IMAFDXhwacha -mhwacha4
 CXX = riscv64-unknown-linux-gnu-g++
 CXXCPP = riscv64-unknown-linux-gnu-g++ -E
 CXXDEPMODE = depmode=gcc3
@@ -681,20 +682,20 @@ INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 ISAINFO = 
-LD = /riscv64-unknown-linux-gnu/bin/ld
-LDFLAGS = 
+LD = /opt/riscv/toolchain/riscv64-unknown-linux-gnu/bin/ld
+LDFLAGS = -L/opt/riscv/toolchain/riscv64-unknown-linux-gnu/lib
 LIBOBJS =  ${LIBOBJDIR}memcmp$U.o ${LIBOBJDIR}strtod$U.o
-LIBS = 
+LIBS = -lz 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIPO = 
 LN_S = ln -s
 LTLIBOBJS =  ${LIBOBJDIR}memcmp$U.lo ${LIBOBJDIR}strtod$U.lo
-LT_SYS_LIBRARY_PATH = 
+LT_SYS_LIBRARY_PATH = /opt/riscv/toolchain/riscv64-unknown-linux-gnu/lib
 MAINT = 
-MAKEINFO = ${SHELL} /usr/riscv64-unknown-linux-gnu/tmp/portage/dev-libs/protobuf-2.5.0-r2/work/protobuf-2.5.0/missing makeinfo
+MAKEINFO = ${SHELL} /home/main/Desktop/riscv-protobuf/missing makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
-NM = /bin/riscv64-unknown-linux-gnu-nm -B
+NM = /opt/riscv/toolchain/bin/riscv64-unknown-linux-gnu-nm -B
 NMEDIT = 
 OBJDUMP = riscv64-unknown-linux-gnu-objdump
 OBJEXT = o
@@ -717,13 +718,13 @@ PTHREAD_LIBS = -lpthread
 RANLIB = riscv64-unknown-linux-gnu-ranlib
 SED = /bin/sed
 SET_MAKE = 
-SHELL = /bin/sh
+SHELL = /bin/bash
 STRIP = riscv64-unknown-linux-gnu-strip
 VERSION = 2.5.0
-abs_builddir = /usr/riscv64-unknown-linux-gnu/tmp/portage/dev-libs/protobuf-2.5.0-r2/work/protobuf-2.5.0/src
-abs_srcdir = /usr/riscv64-unknown-linux-gnu/tmp/portage/dev-libs/protobuf-2.5.0-r2/work/protobuf-2.5.0/src
-abs_top_builddir = /usr/riscv64-unknown-linux-gnu/tmp/portage/dev-libs/protobuf-2.5.0-r2/work/protobuf-2.5.0
-abs_top_srcdir = /usr/riscv64-unknown-linux-gnu/tmp/portage/dev-libs/protobuf-2.5.0-r2/work/protobuf-2.5.0
+abs_builddir = /home/main/Desktop/riscv-protobuf/src
+abs_srcdir = /home/main/Desktop/riscv-protobuf/src
+abs_top_builddir = /home/main/Desktop/riscv-protobuf
+abs_top_srcdir = /home/main/Desktop/riscv-protobuf
 ac_ct_AR = 
 ac_ct_CC = 
 ac_ct_CXX = 
@@ -754,7 +755,7 @@ host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /usr/riscv64-unknown-linux-gnu/tmp/portage/dev-libs/protobuf-2.5.0-r2/work/protobuf-2.5.0/install-sh
+install_sh = ${SHELL} /home/main/Desktop/riscv-protobuf/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -764,7 +765,7 @@ mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
 prefix = /usr/local
-program_transform_name = s,x,x,
+program_transform_name = s&^&riscv64-unknown-linux-gnu-&
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
@@ -772,19 +773,19 @@ srcdir = .
 subdirs =  gtest
 sysconfdir = ${prefix}/etc
 target = riscv64-unknown-linux-gnu
-target_alias = 
+target_alias = riscv64-unknown-linux-gnu
 target_cpu = riscv64
 target_os = linux-gnu
 target_vendor = unknown
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-GZCHECKPROGRAMS = 
-#GZCHECKPROGRAMS = zcgzip zcgunzip
-GZHEADERS = 
-#GZHEADERS = google/protobuf/io/gzip_stream.h
-GZTESTS = 
-#GZTESTS = google/protobuf/io/gzip_stream_unittest.sh
+#GZCHECKPROGRAMS = 
+GZCHECKPROGRAMS = zcgzip zcgunzip
+#GZHEADERS = 
+GZHEADERS = google/protobuf/io/gzip_stream.h
+#GZTESTS = 
+GZTESTS = google/protobuf/io/gzip_stream_unittest.sh
 #NO_OPT_CXXFLAGS = $(PTHREAD_CFLAGS)
 
 # These are good warnings to turn on by default
@@ -812,6 +813,7 @@ nobase_include_HEADERS = \
   google/protobuf/stubs/atomicops_internals_macosx.h            \
   google/protobuf/stubs/atomicops_internals_mips_gcc.h          \
   google/protobuf/stubs/atomicops_internals_pnacl.h             \
+  google/protobuf/stubs/atomicops_internals_riscv64_gcc.h       \
   google/protobuf/stubs/atomicops_internals_x86_gcc.h           \
   google/protobuf/stubs/atomicops_internals_x86_msvc.h          \
   google/protobuf/stubs/common.h                                \
@@ -1134,10 +1136,10 @@ test_plugin_SOURCES = \
   google/protobuf/testing/file.h                               \
   google/protobuf/compiler/test_plugin.cc
 
-#zcgzip_LDADD = $(PTHREAD_LIBS) libprotobuf.la
-#zcgzip_SOURCES = google/protobuf/testing/zcgzip.cc
-#zcgunzip_LDADD = $(PTHREAD_LIBS) libprotobuf.la
-#zcgunzip_SOURCES = google/protobuf/testing/zcgunzip.cc
+zcgzip_LDADD = $(PTHREAD_LIBS) libprotobuf.la
+zcgzip_SOURCES = google/protobuf/testing/zcgzip.cc
+zcgunzip_LDADD = $(PTHREAD_LIBS) libprotobuf.la
+zcgunzip_SOURCES = google/protobuf/testing/zcgunzip.cc
 all: $(BUILT_SOURCES)
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
@@ -3524,14 +3526,14 @@ clean-local:
 	rm -f *.loT
 
 #unittest_proto_middleman: $(protoc_inputs)
-#	$(PROTOC) -I$(srcdir) --cpp_out=. $^
+#	-$(PROTOC) -I$(srcdir) --cpp_out=. $^
 #	touch unittest_proto_middleman
 
 # We have to cd to $(srcdir) before executing protoc because $(protoc_inputs) is
 # relative to srcdir, which may not be the same as the current directory when
 # building out-of-tree.
 unittest_proto_middleman: protoc$(EXEEXT) $(protoc_inputs)
-	oldpwd=`pwd` && ( cd $(srcdir) && $$oldpwd/protoc$(EXEEXT) -I. --cpp_out=$$oldpwd $(protoc_inputs) )
+	-oldpwd=`pwd` && ( cd $(srcdir) && $$oldpwd/protoc$(EXEEXT) -I. --cpp_out=$$oldpwd $(protoc_inputs) )
 	touch unittest_proto_middleman
 
 $(protoc_outputs): unittest_proto_middleman

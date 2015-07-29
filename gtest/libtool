@@ -1,6 +1,6 @@
-#! /bin/sh
+#! /bin/bash
 # Generated automatically by config.status (gtest) 1.6.0
-# Libtool was configured on host harry-gentoo:
+# Libtool was configured on host main-pc:
 # NOTE: Changes made to this file will be lost: look at ltmain.sh.
 
 # Provide generalized library-building support services.
@@ -33,7 +33,7 @@
 available_tags='CXX '
 
 # Configured defaults for sys_lib_dlsearch_path munging.
-: ${LT_SYS_LIBRARY_PATH=""}
+: ${LT_SYS_LIBRARY_PATH="/opt/riscv/toolchain/riscv64-unknown-linux-gnu/lib"}
 
 # ### BEGIN LIBTOOL CONFIG
 
@@ -57,7 +57,7 @@ fast_install=yes
 shared_archive_member_spec=
 
 # Shell to use when invoking shell scripts.
-SHELL="/bin/sh"
+SHELL="/bin/bash"
 
 # An echo program that protects backslashes.
 ECHO="printf %s\\n"
@@ -91,7 +91,7 @@ EGREP="/bin/grep -E"
 FGREP="/bin/grep -F"
 
 # A BSD- or MS-compatible name lister.
-NM="/bin/riscv64-unknown-linux-gnu-nm -B"
+NM="/opt/riscv/toolchain/bin/riscv64-unknown-linux-gnu-nm -B"
 
 # Whether we need soft or hard links.
 LN_S="ln -s"
@@ -165,7 +165,7 @@ lock_old_archive_extraction=no
 LTCC="riscv64-unknown-linux-gnu-gcc"
 
 # LTCC compiler flags.
-LTCFLAGS=""
+LTCFLAGS="-march=RV64IMAFDXhwacha -mhwacha4"
 
 # Take the output of nm and produce a listing of raw symbols and C names.
 global_symbol_pipe="sed -n -e 's/^.*[	 ]\\([ABCDGIRSTW][ABCDGIRSTW]*\\)[	 ][	 ]*\\([_A-Za-z][_A-Za-z0-9]*\\)\$/\\1 \\2 \\2/p' | sed '/ __gnu_lto/d'"
@@ -282,13 +282,13 @@ finish_eval=""
 hardcode_into_libs=yes
 
 # Compile-time system search path for libraries.
-sys_lib_search_path_spec="/lib/gcc/riscv64-unknown-linux-gnu/5.1.0 /riscv64-unknown-linux-gnu/lib /sysroot/lib /sysroot/usr/lib "
+sys_lib_search_path_spec="/opt/riscv/toolchain/lib/gcc/riscv64-unknown-linux-gnu/5.1.0 /opt/riscv/toolchain/riscv64-unknown-linux-gnu/lib /opt/riscv/toolchain/sysroot/lib /opt/riscv/toolchain/sysroot/usr/lib "
 
 # Detected run-time system search path for libraries.
-sys_lib_dlsearch_path_spec="/lib /usr/lib /lib64 /usr/lib64 /usr/local/lib64 /lib32 /usr/lib32 /usr/local/lib32 /lib /usr/lib /usr/local/lib /usr/x86_64-pc-linux-gnu/lib /usr/lib/gcc/x86_64-pc-linux-gnu/4.8.4/32 /usr/lib/gcc/x86_64-pc-linux-gnu/4.8.4 "
+sys_lib_dlsearch_path_spec="/lib /usr/lib /usr/lib/x86_64-linux-gnu/libfakeroot /usr/lib/i386-linux-gnu/mesa /lib/i386-linux-gnu /usr/lib/i386-linux-gnu /lib/i686-linux-gnu /usr/lib/i686-linux-gnu /usr/local/lib /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/mesa-egl /usr/lib/x86_64-linux-gnu/mesa /lib32 /usr/lib32 /libx32 /usr/libx32 "
 
 # Explicit LT_SYS_LIBRARY_PATH set during ./configure time.
-configure_time_lt_sys_library_path=""
+configure_time_lt_sys_library_path="/opt/riscv/toolchain/riscv64-unknown-linux-gnu/lib"
 
 # Whether dlopen is supported.
 dlopen_support=unknown
@@ -305,7 +305,7 @@ striplib="riscv64-unknown-linux-gnu-strip --strip-unneeded"
 
 
 # The linker used to build libraries.
-LD="/riscv64-unknown-linux-gnu/bin/ld"
+LD="/opt/riscv/toolchain/riscv64-unknown-linux-gnu/bin/ld"
 
 # How to create reloadable object files.
 reload_flag=" -r"
@@ -11668,7 +11668,7 @@ build_old_libs=`case $build_libtool_libs in yes) echo no;; *) echo yes;; esac`
 # ### BEGIN LIBTOOL TAG CONFIG: CXX
 
 # The linker used to build libraries.
-LD="/riscv64-unknown-linux-gnu/bin/ld"
+LD="/opt/riscv/toolchain/riscv64-unknown-linux-gnu/bin/ld"
 
 # How to create reloadable object files.
 reload_flag=" -r"
@@ -11799,17 +11799,17 @@ file_list_spec=""
 hardcode_action=immediate
 
 # The directories searched by this compiler when creating a shared library.
-compiler_lib_search_dirs="/lib/gcc/riscv64-unknown-linux-gnu/5.1.0 /lib/gcc/riscv64-unknown-linux-gnu/5.1.0/../../../../riscv64-unknown-linux-gnu/lib/../lib /sysroot/lib/../lib /sysroot/usr/lib/../lib /lib/gcc/riscv64-unknown-linux-gnu/5.1.0/../../../../riscv64-unknown-linux-gnu/lib /sysroot/lib /sysroot/usr/lib"
+compiler_lib_search_dirs="/opt/riscv/toolchain/lib/gcc/riscv64-unknown-linux-gnu/5.1.0 /opt/riscv/toolchain/lib/gcc/riscv64-unknown-linux-gnu/5.1.0/../../../../riscv64-unknown-linux-gnu/lib/../lib /opt/riscv/toolchain/sysroot/lib/../lib /opt/riscv/toolchain/sysroot/usr/lib/../lib /opt/riscv/toolchain/lib/gcc/riscv64-unknown-linux-gnu/5.1.0/../../../../riscv64-unknown-linux-gnu/lib /opt/riscv/toolchain/sysroot/lib /opt/riscv/toolchain/sysroot/usr/lib"
 
 # Dependencies to place before and after the objects being linked to
 # create a shared library.
-predep_objects="/lib/gcc/riscv64-unknown-linux-gnu/5.1.0/crti.o /lib/gcc/riscv64-unknown-linux-gnu/5.1.0/crtbeginS.o"
-postdep_objects="/lib/gcc/riscv64-unknown-linux-gnu/5.1.0/crtendS.o /lib/gcc/riscv64-unknown-linux-gnu/5.1.0/crtn.o"
+predep_objects="/opt/riscv/toolchain/lib/gcc/riscv64-unknown-linux-gnu/5.1.0/crti.o /opt/riscv/toolchain/lib/gcc/riscv64-unknown-linux-gnu/5.1.0/crtbeginS.o"
+postdep_objects="/opt/riscv/toolchain/lib/gcc/riscv64-unknown-linux-gnu/5.1.0/crtendS.o /opt/riscv/toolchain/lib/gcc/riscv64-unknown-linux-gnu/5.1.0/crtn.o"
 predeps=""
 postdeps="-lstdc++ -lm -lgcc_s -lc -lgcc_s"
 
 # The library search path used internally by the compiler when linking
 # a shared library.
-compiler_lib_search_path="-L/lib/gcc/riscv64-unknown-linux-gnu/5.1.0 -L/lib/gcc/riscv64-unknown-linux-gnu/5.1.0/../../../../riscv64-unknown-linux-gnu/lib/../lib -L/sysroot/lib/../lib -L/sysroot/usr/lib/../lib -L/lib/gcc/riscv64-unknown-linux-gnu/5.1.0/../../../../riscv64-unknown-linux-gnu/lib -L/sysroot/lib -L/sysroot/usr/lib"
+compiler_lib_search_path="-L/opt/riscv/toolchain/lib/gcc/riscv64-unknown-linux-gnu/5.1.0 -L/opt/riscv/toolchain/lib/gcc/riscv64-unknown-linux-gnu/5.1.0/../../../../riscv64-unknown-linux-gnu/lib/../lib -L/opt/riscv/toolchain/sysroot/lib/../lib -L/opt/riscv/toolchain/sysroot/usr/lib/../lib -L/opt/riscv/toolchain/lib/gcc/riscv64-unknown-linux-gnu/5.1.0/../../../../riscv64-unknown-linux-gnu/lib -L/opt/riscv/toolchain/sysroot/lib -L/opt/riscv/toolchain/sysroot/usr/lib"
 
 # ### END LIBTOOL TAG CONFIG: CXX
